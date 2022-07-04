@@ -1,0 +1,17 @@
+.register__span-login {
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 15px auto 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 468px) {
+  .register__span-login {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin: 20px auto 0;
+  }
+}

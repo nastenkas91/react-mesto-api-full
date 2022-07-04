@@ -1,0 +1,10 @@
+.register__link {
+  text-decoration: none;
+  color: white;
+}
+
+.register__link:hover {
+  opacity: 0.6;
+}
+
+

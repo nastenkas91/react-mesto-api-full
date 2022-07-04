@@ -1,0 +1,5 @@
+.element__name-wraper {
+  display: flex;
+  background: #fff;
+  justify-content: space-between;
+}

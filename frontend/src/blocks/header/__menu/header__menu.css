@@ -1,0 +1,29 @@
+.header__menu {
+  display: flex;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  color: white;
+  margin-bottom: 46px ;
+}
+
+@media screen and (max-width: 600px) {
+  .header__menu {
+    display: none;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 90px;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin: 0;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(54, 54, 54, .7);
+  }
+}
+
+

@@ -1,0 +1,5 @@
+.profile__name-wraper {
+  display: flex;
+  flex-direction: column;
+}
+

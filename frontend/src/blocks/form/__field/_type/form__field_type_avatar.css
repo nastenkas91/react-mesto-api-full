@@ -1,0 +1,9 @@
+.form__field_type_avatar {
+  margin-top: 34px;
+}
+
+@media screen and (max-width: 468px) {
+  .form__field_type_avatar {
+    margin-top: 75px;
+  }
+}

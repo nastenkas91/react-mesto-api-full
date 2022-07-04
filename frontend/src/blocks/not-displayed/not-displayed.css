@@ -1,0 +1,4 @@
+.not-displayed {
+  display: none;
+  visibility: hidden;
+}

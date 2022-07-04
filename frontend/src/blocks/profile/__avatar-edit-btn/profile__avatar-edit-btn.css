@@ -1,0 +1,9 @@
+.profile__avatar-edit-btn {
+  background: transparent;
+  position: absolute;
+  z-index: -1;
+  top: 47px;
+  left: 47px;
+}
+
+

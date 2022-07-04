@@ -1,0 +1,12 @@
+.form__submit-btn_disabled {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 2px;
+  opacity: 0.2;
+}
+
+.form__submit-btn:hover {
+  opacity: 0.2;
+}

@@ -1,0 +1,9 @@
+.form__field_type_card-title {
+  margin: 0;
+}
+
+@media screen and (max-width: 468px) {
+  .form__field_type_card-title {
+    margin: 0;
+  }
+}

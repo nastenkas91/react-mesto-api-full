@@ -1,0 +1,10 @@
+.form__field_type_card-img {
+  margin: 0;
+}
+
+@media screen and (max-width: 468px) {
+  .form__field_type_card-img {
+    margin: 0;
+  }
+}
+
