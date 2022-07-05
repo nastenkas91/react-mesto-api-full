@@ -17,7 +17,7 @@ function Register({onRegister}) {
     const { email, password } = userAuthData;
     auth.register(email, password)
       .then((res) => {
-        if(res.ok) {
+        if(res._id) {
           history.push('/signin');
           onRegister(false);
         }
