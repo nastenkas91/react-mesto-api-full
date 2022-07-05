@@ -10,16 +10,16 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading, onOverlayC
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
-  const [nameIsValid, setNameIsValid] = useState(false);
-  const [errorName, setErrorName] = useState('');
-  const [descriptionIsValid, setDescriptionIsValid] = useState(false);
-  const [errorDescription, setErrorDescription] = useState('');
+  // const [nameIsValid, setNameIsValid] = useState(false);
+  // const [errorName, setErrorName] = useState('');
+  // const [descriptionIsValid, setDescriptionIsValid] = useState(false);
+  // const [errorDescription, setErrorDescription] = useState('');
 
   useEffect(() => {
     setName(currentUser.name || '');
     setDescription(currentUser.about || '');
-    setErrorDescription('');
-    setErrorName('');
+    // setErrorDescription('');
+    // setErrorName('');
   }, [currentUser, isOpen])
 
 
@@ -34,15 +34,15 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading, onOverlayC
   function handleNameChange(e) {
     const nameInput = e.target;
     setName(nameInput.value);
-    setNameIsValid(nameInput.validity.valid);
-    nameIsValid ? setErrorName('') : setErrorName(nameInput.validationMessage);
+    // setNameIsValid(nameInput.validity.valid);
+    // nameIsValid ? setErrorName('') : setErrorName(nameInput.validationMessage);
   }
 
   function handleDescriptionChange(e) {
     const descriptionInput = e.target;
     setDescription(descriptionInput.value);
-    setDescriptionIsValid(descriptionInput.validity.valid);
-    descriptionIsValid ? setErrorDescription('') : setErrorDescription(descriptionInput.validationMessage);
+    // setDescriptionIsValid(descriptionInput.validity.valid);
+    // descriptionIsValid ? setErrorDescription('') : setErrorDescription(descriptionInput.validationMessage);
   }
 
   return (
@@ -69,7 +69,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading, onOverlayC
           value={name || ''}
           onChange={handleNameChange}
         />
-        <span className="form__field-error name-error">{errorName}</span>
+        <span className="form__field-error name-error"></span>
         <input
           type="text"
           name="profileOccupation"
@@ -82,12 +82,13 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading, onOverlayC
           value={description || ''}
           onChange={handleDescriptionChange}
         />
-        <span className="form__field-error occupation-error">{errorDescription}</span>
+        <span className="form__field-error occupation-error"></span>
         <button
-          disabled={!(nameIsValid && descriptionIsValid)}
+          //disabled={!(nameIsValid && descriptionIsValid)}
           aria-label='Сохранить'
           type="submit"
-          className={`form__submit-btn ${(nameIsValid && descriptionIsValid) ? '' : 'form__submit-btn_disabled'}`}
+          //className={`form__submit-btn ${(nameIsValid && descriptionIsValid) ? '' : 'form__submit-btn_disabled'}`}
+          className='form__submit-btn'
           onSubmit={handleSubmit}>
           {isLoading ? 'Сохранение...' : 'Сохранить'}
         </button>

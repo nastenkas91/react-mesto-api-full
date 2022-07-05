@@ -47,15 +47,38 @@ function App() {
 
   useEffect(() => {
     checkToken();
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(res => {
-        setCurrentUser(res[0]);
-        setCards(res[1]);
-      })
-      .catch(((err) => {
-        console.log(err)
-      }));
   }, [])
+
+  useEffect(() => {
+    if (loggedIn) {
+      Promise.all([api.getUserInfo(), api.getInitialCards()])
+        .then(res => {
+          setCurrentUser(res[0]);
+          setCards(res[1].reverse());
+        })
+        .catch(((err) => {
+          console.log(err)
+        }));
+    }
+  }, [loggedIn])
+
+  function checkToken() {
+    const token = localStorage.getItem('token');
+    if(token) {
+      auth.tokenCheck(token)
+        .then((res) => {
+          if (res) {
+            setLoggedIn(true);
+            setUserEmail(res.email);
+            history.push('/');
+          } else if (res.message) {
+            return res.message
+          }
+        })
+    } else {
+      return;
+    }
+  }
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
@@ -74,7 +97,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
 
     api.changeLikeStatus(card._id, !isLiked)
       .then(newCard => {
@@ -166,24 +189,6 @@ function App() {
     setBurgerMenuActive(false);
     setLoggedIn(false);
     localStorage.setItem('token', '')
-  }
-
-  function checkToken() {
-    const token = localStorage.getItem('token');
-    if(token) {
-      auth.tokenCheck(token)
-        .then((res) => {
-          if (res.data) {
-            setLoggedIn(true);
-            setUserEmail(res.data.email);
-            history.push('/');
-          } else if (res.message) {
-            return res.message
-          }
-        })
-    } else {
-      return;
-    }
   }
 
   function handleBurgerClick() {

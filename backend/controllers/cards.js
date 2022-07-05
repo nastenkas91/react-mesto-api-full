@@ -10,7 +10,7 @@ module.exports.getCards = (req, res, next) => {
       if (!cards) {
         return next(new NotFound('Пользователи не найдены'));
       }
-      return res.send({ data: cards });
+      return res.send(cards);
     });
 };
 
@@ -20,7 +20,7 @@ module.exports.createCard = (req, res, next) => {
   Card.create(
     { name, link, owner: req.user._id },
   )
-    .then((card) => res.send({ card }))
+    .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         const errMessage = err.message.replace('user validation failed:', '');
@@ -63,7 +63,7 @@ module.exports.addLike = (req, res, next) => {
       if (!card) {
         throw new NotFound('Карточка по указанному id не найдена');
       }
-      return res.send({ card });
+      return res.send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -85,7 +85,7 @@ module.exports.removeLike = (req, res, next) => {
       if (!card) {
         throw new NotFound('Карточка по указанному id не найдена');
       }
-      return res.send({ card });
+      return res.send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {

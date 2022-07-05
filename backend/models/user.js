@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-const URL_REGEX = require('../utils/constants');
-
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -20,7 +18,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator(v) {
-        return URL_REGEX.test(v);
+        validator.isURL(v);
       },
     },
     default: 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',

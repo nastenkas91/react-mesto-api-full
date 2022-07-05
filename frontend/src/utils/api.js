@@ -2,9 +2,12 @@ import {apiConfig} from "./data";
 
 class Api {
   constructor(apiConfig) {
-    this._baseUrl = apiConfig.baseUrl
-    this._token = apiConfig.headers.authorization;
+    this._baseUrl = apiConfig.baseUrl;
     this._headers = apiConfig.headers;
+  }
+
+  get _token() {
+    return `Bearer ${localStorage.getItem(('token'))}`
   }
 
   _checkResponse = (res) => {
@@ -32,7 +35,10 @@ class Api {
   editProfileInfo({ userName, occupation }) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        authorization: `${this._token}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: userName,
         about: occupation
@@ -44,7 +50,10 @@ class Api {
   editAvatar({ avatar }) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        authorization: `${this._token}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         avatar,
       })
@@ -55,7 +64,10 @@ class Api {
   addNewCard({ name, link }) {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
-      headers: this._headers,
+      headers: {
+        authorization: `${this._token}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: name,
         link: link

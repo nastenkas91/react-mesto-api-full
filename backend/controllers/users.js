@@ -80,7 +80,7 @@ module.exports.updateUser = (req, res, next) => {
       if (!user) {
         return next(new NotFound('Пользователь по указанному id не найден'));
       }
-      return res.send({ user });
+      return res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -103,7 +103,7 @@ module.exports.updateAvatar = (req, res, next) => {
       if (!user) {
         return next(new NotFound('Пользователь по указанному id не найден'));
       }
-      return res.send({ user });
+      return res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -127,12 +127,8 @@ module.exports.login = (req, res, next) => {
             throw new AuthorisationError('Неправильные почта или пароль');
           }
           const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'secret-key', { expiresIn: '7d' });
-          res.cookie('jwt', token, { maxAge: 3600000 * 24 * 7, httpOnly: true, sameSite: true }).send({
-            name: user.name,
-            about: user.about,
-            avatar: user.avatar,
-            email: user.email,
-            _id: user._id,
+          res.send({
+            token,
           });
         });
     })

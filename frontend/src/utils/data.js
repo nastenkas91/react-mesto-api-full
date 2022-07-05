@@ -27,9 +27,8 @@
 */
 
 export const apiConfig = {
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-39',
+  baseUrl: 'https://api.mesto-project.nomoredomains.sbs',
   headers: {
-    authorization: '220ebe2f-439a-47aa-97ec-c29f2c3223ee',
     'Content-Type': 'application/json'
   }
 }

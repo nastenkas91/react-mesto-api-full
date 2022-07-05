@@ -17,15 +17,15 @@ function Register({onRegister}) {
     const { email, password } = userAuthData;
     auth.register(email, password)
       .then((res) => {
-        if(res.data) {
+        if(res.ok) {
           history.push('/signin');
           onRegister(false);
-        } else if (res.message || res.error) {
-          onRegister(true);
-          setUserAuthData({email: '', password: ''})
         }
-      });
-
+      })
+      .catch(() => {
+        onRegister(true);
+        setUserAuthData({email: '', password: ''})
+      })
   }
 
   return (

@@ -1,42 +1,31 @@
-export const BASE_URL = 'https://auth.nomoreparties.co'
+export const BASE_URL = 'https://api.mesto-project.nomoredomains.sbs'
+
+const checkResponse = (res) =>
+  res.ok ? res.json(): Promise.reject(`Ошибка: ${res.status}`);
+
 
 export const register = ( email, password ) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
+      "Accept": "application/json",
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({email, password})
+    body: JSON.stringify({ email, password })
   })
-    .then((res) => {
-      return res.json();
-    })
-    .then((res) => {
-      return res
-    })
-    .catch(err => console.log(err))
+    .then(checkResponse);
 }
 
 export const login = ( password, email  ) => {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
+      "Accept": "application/json",
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({password, email})
+    body: JSON.stringify({ password, email })
   })
-    .then(res => {
-      return res.json();
-    })
-    .then(data => {
-      if (data.token) {
-        localStorage.setItem('token', data.token);
-        return data;
-      } else {
-        return data;
-      }
-    })
-    .catch(err => console.log(err))
+    .then(checkResponse)
 }
 
 export const tokenCheck = (token) => {
@@ -47,6 +36,5 @@ export const tokenCheck = (token) => {
       "Authorization" : `Bearer ${token}`
     }
   })
-    .then(res => res.json())
-    .catch(err => console.log(err))
+    .then(checkResponse)
 }

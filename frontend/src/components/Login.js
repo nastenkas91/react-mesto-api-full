@@ -17,12 +17,14 @@ function Login({handleLogin, onFail}) {
     auth.login(password, email)
       .then((data) => {
         if (data.token) {
+          localStorage.setItem('token', data.token);
           setUserData({password: '', email: ''});
           handleLogin(userData.email);
           history.push('/')
-        } else if (data.message || data.error) {
-          onFail(true);
         }
+      })
+      .catch(() => {
+        onFail(true);
       })
   }
 
