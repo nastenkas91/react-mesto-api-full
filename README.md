@@ -1,4 +1,4 @@
-# eact-mesto-api-full
+# React-mesto-api-full
 Project Place with registration, authorization and verification of token. 
 
 Interactive page where you can add/delete photos, open full-size view,
