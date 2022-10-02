@@ -21,8 +21,8 @@ update profile information, add likes. All the forms are checked for validity.
 * [https://mesto-project.nomoredomains.sbs](https://mesto-project.nomoredomains.sbs)
 
 ## Backend 
-Directory "backend"
-[https://api.mesto-project.nomoredomains.sbs](https://api.mesto-project.nomoredomains.sbs)
+* Directory "backend"
+* [https://api.mesto-project.nomoredomains.sbs](https://api.mesto-project.nomoredomains.sbs)
 
 # react-mesto-api-full
 Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями. 
@@ -40,7 +40,7 @@ Directory "backend"
 
 ## Фронтэнд
 * Папка "frontend"
-*[https://mesto-project.nomoredomains.sbs](https://mesto-project.nomoredomains.sbs)
+* [https://mesto-project.nomoredomains.sbs](https://mesto-project.nomoredomains.sbs)
 
 ## Бэкенд 
 * Папка "backend"
